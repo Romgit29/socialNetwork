@@ -1,0 +1,106 @@
+#picCorpModal {
+    width: 520px;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+    z-index: 2;
+    background-color: #F8FAFC;
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#picCorpModal_corpArea {
+    min-height:500px; 
+    min-width:500px; 
+    display:flex; 
+    align-items:center; 
+    border:1px solid grey; 
+    position: relative; 
+    overflow: hidden; 
+    justify-content: center;
+}
+
+#corpSquare {
+    cursor: grab;
+    width:150px;
+    height:150px; 
+    position: absolute; 
+    border: 1px solid grey; 
+    left: 174px;
+    z-index: 1;
+}
+
+#corpSquare .cornerCircle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    position: absolute;
+    background-color: white;
+    cursor: pointer;
+    z-index: 2;
+    cursor: grab;
+}
+
+#picCorpModal_corpSquare_circleTopLeft {
+    top: -7.5px; 
+    left: -7.5px;
+}
+
+#picCorpModal_corpSquare_circleBottomLeft {
+    bottom: -7.5px; 
+    left: -7.5px;
+}
+
+#picCorpModal_corpSquare_circleBottomRight {
+    bottom: -7.5px; 
+    right: -7.5px;
+}
+
+#picCorpModal_corpSquare_circleTopRight {
+    top: -7.5px; 
+    right: -7.5px;
+}
+
+#picCorpModal_img{
+    width: 498px;
+    height: 498px;
+    position: relative;
+}
+
+#picCorpModal_buttonsBlock {
+    display:flex; 
+    justify-content: space-evenly; 
+    width: 100%; 
+    padding-top: 10px
+}
+
+#profileData {
+    padding:6px; 
+    border: 1px solid grey; 
+    border-radius: 10px; 
+    background:#36393e;
+    color:white;
+    display: flex;
+}
+
+#profileData_name {
+    display:flex; 
+    margin-top: 5px; 
+    font-weight: 600; 
+    font-size: 15px; 
+    word-break: break-all; 
+    min-width: 100%;
+}
+
+#profileData_buttonsBlock {
+    display:flex; 
+    justify-content: flex-end; 
+}
+
+#profileData_buttonsBlock button{
+    margin-left: 5px;
+}

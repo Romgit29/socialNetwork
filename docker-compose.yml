@@ -1,0 +1,46 @@
+version: '3'
+services:
+  php:
+    image: bitnami/php-fpm:latest
+    container_name: php-fpm
+    hostname: php-fpm
+    depends_on:
+      - mysql
+    environment:
+      - "ENV_SUBSTITUTION_ENABLE=true"
+      - "PHP_MEMORY_LIMIT=512M"
+      - "PHP_FPM_LISTEN=9000"
+      - "PHP_SESSION_GC_MAXLIFETIME=7200"
+    volumes:
+      - ./projmain:/var/www/proj:rw
+      - ./php/php.ini:/opt/bitnami/php/etc/php.ini
+    working_dir: /var/www/proj
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    hostname: nginx
+    ports:
+      - 8082:80
+    volumes:
+      - ./projmain:/var/www/proj
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx/
+      - ./nginx/nginx.conf:/var/log/nginx/nginx.conf
+    depends_on:
+      - php
+  
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    hostname: mysql
+    tty: true
+    ports:
+      - "5051:3306"
+    volumes:
+      - ./mysql/mysqldata:/var/lib/mysql:rw
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf:rw
+    environment:
+      MYSQL_DATABASE: devsql
+      MYSQL_ROOT_PASSWORD: mysql_root_password
+      SERVICE_NAME: mysql
